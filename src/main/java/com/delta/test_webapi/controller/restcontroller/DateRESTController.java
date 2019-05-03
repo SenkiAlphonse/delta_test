@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-
 @RestController
 public class DateRESTController {
 
@@ -26,7 +24,7 @@ public class DateRESTController {
 
   @GetMapping("/api/holidays")
   public ResponseEntity isHoliday(@RequestParam(value = "date") String date){
-    logger.debug("/api/holidays GET isHoliday() called with " + date);
+    logger.debug("/api/holiday GET isHoliday() called with " + date);
     try{
       IsHolidayResponseDto isThisDateHoliday = dateService.setHolidayResponseDto(date);
       logger.debug("/api/holidays GET isHoliday() response: " + isThisDateHoliday.isHoliday);

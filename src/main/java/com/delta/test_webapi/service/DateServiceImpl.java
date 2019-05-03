@@ -1,7 +1,6 @@
 package com.delta.test_webapi.service;
 
-import com.delta.test_webapi.model.Holiday;
-import com.delta.test_webapi.model.IsHolidayResponseDto;
+import com.delta.test_webapi.model.*;
 import com.delta.test_webapi.repository.HolidayRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,4 +52,55 @@ public class DateServiceImpl implements DateService {
     Holiday removeHoliday = new Holiday(getLocalDateFromParam(date));
     holidayRepository.removeHoliday(removeHoliday);
   }
+
+  @Override
+  public DayCountDto countDays(String startDate, String endDate) {
+    LocalDate start = getLocalDateFromParam(startDate);
+    LocalDate end = getLocalDateFromParam(endDate);
+
+    int holidayCount = 0;
+    int workdayCount = 0;
+
+    for (LocalDate d = start; !d.isAfter(end); d = d.plusDays(1)) {
+      if (holidayRepository.isHoliday(d)){
+        holidayCount++;
+      }
+      else {
+        workdayCount++;
+      }
+    }
+    return new DayCountDto(holidayCount, workdayCount);
+  }
+
+  @Override
+  public HolidayCountDto countHolidays(String startDate, String endDate) {
+    LocalDate start = getLocalDateFromParam(startDate);
+    LocalDate end = getLocalDateFromParam(endDate);
+
+    int holidayCount = 0;
+
+    for (LocalDate d = start; !d.isAfter(end); d = d.plusDays(1)) {
+      if (holidayRepository.isHoliday(d)) {
+        holidayCount++;
+      }
+    }
+    return new HolidayCountDto(holidayCount);
+  }
+
+  @Override
+  public WorkdayCountDto countWorkdays(String startDate, String endDate) {
+    LocalDate start = getLocalDateFromParam(startDate);
+    LocalDate end = getLocalDateFromParam(endDate);
+
+    int workdayCount = 0;
+
+    for (LocalDate d = start; !d.isAfter(end); d = d.plusDays(1)) {
+      if (!holidayRepository.isHoliday(d)) {
+        workdayCount++;
+      }
+    }
+    return new WorkdayCountDto(workdayCount);
+  }
 }
+
+
