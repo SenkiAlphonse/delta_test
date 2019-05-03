@@ -1179,3 +1179,5 @@ Unconditional classes:
 2019-05-03 23:48:24,472 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 6 ms
 2019-05-03 23:48:24,502 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/workdays/count GET countWorkdays() called with: 2019-01-01 as startDate, and 2019-12-31 as endDate
 2019-05-03 23:48:24,516 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/workdays/count GET countWorkdays() response: 362
+2019-05-03 23:50:54,159 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-5] /api/workdays/count GET countWorkdays() called with: 2017-01-01 as startDate, and 2019-12-31 as endDate
+2019-05-03 23:50:54,161 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-5] /api/holidays GET isHoliday response: 2017-01-01 or 2019-12-31 is out of scope

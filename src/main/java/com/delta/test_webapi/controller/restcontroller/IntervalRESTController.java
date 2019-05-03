@@ -36,11 +36,11 @@ public class IntervalRESTController {
       return new ResponseEntity<>(holidayCountDto, HttpStatus.OK);
     }
     catch(IllegalArgumentException e){
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/holidays/count GET countHolidays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
     catch (Exception e) {
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/holidays/count GET countHolidays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -58,11 +58,11 @@ public class IntervalRESTController {
       return new ResponseEntity<>(workdayCountDto, HttpStatus.OK);
     }
     catch(IllegalArgumentException e){
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/workdays/count GET countWorkdays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
     catch (Exception e) {
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/workdays/count GET countWorkdays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -78,11 +78,11 @@ public class IntervalRESTController {
       return new ResponseEntity<>(dayCountDto, HttpStatus.OK);
     }
       catch(IllegalArgumentException e){
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/days/count GET countWorkdays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
       catch (Exception e) {
-      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      logger.debug("/api/days/count GET countWorkdays() response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
