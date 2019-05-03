@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @RestController
 public class DateRESTController {
 
@@ -29,9 +27,7 @@ public class DateRESTController {
     logger.debug("/api/holiday GET isHoliday() called with " + date);
 
     try{
-      if(!dateService.valiDate(date)){
-        throw new IllegalArgumentException(date + " is out of scope");
-      }
+      valiDate(date);
       IsHolidayResponseDto isThisDateHoliday = dateService.setHolidayResponseDto(date);
       logger.debug("/api/holidays GET isHoliday() response: " + isThisDateHoliday.isHoliday);
       return new ResponseEntity<>(isThisDateHoliday, HttpStatus.OK);
@@ -52,9 +48,7 @@ public class DateRESTController {
     logger.debug("/api/holidays PUT setHoliday called with date = " + date + ", setholiday = " + setHoliday);
 
     try {
-      if (!dateService.valiDate(date)) {
-        throw new IllegalArgumentException(date + " is out of scope");
-      }
+      valiDate(date);
 
       boolean isHoliday = dateService.isHoliday(date);
 
@@ -81,6 +75,12 @@ public class DateRESTController {
     catch (Exception e) {
       logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  private void valiDate(@RequestParam("date") String date) {
+    if (!dateService.valiDate(date)) {
+      throw new IllegalArgumentException(date + " is out of scope");
     }
   }
 }

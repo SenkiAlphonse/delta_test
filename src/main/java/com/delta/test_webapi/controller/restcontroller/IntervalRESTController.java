@@ -28,26 +28,70 @@ public class IntervalRESTController {
   public ResponseEntity countHolidays(@RequestParam(value = "startdate") String startDate,
                                       @RequestParam(value = "enddate") String endDate) {
     logger.debug("/api/holidays/count GET countHolidays() called with: " + startDate + " as startDate, and " + endDate + " as endDate");
-    HolidayCountDto holidayCountDto = dateService.countHolidays(startDate, endDate);
-    logger.debug("/api/holidays/count GET countHolidays() response: " + holidayCountDto.holidayCount);
-    return new ResponseEntity<>(holidayCountDto, HttpStatus.OK);
+    try {
+      valiDates(startDate, endDate);
+
+      HolidayCountDto holidayCountDto = dateService.countHolidays(startDate, endDate);
+      logger.debug("/api/holidays/count GET countHolidays() response: " + holidayCountDto.holidayCount);
+      return new ResponseEntity<>(holidayCountDto, HttpStatus.OK);
+    }
+    catch(IllegalArgumentException e){
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    catch (Exception e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @GetMapping("/api/workdays/count")
   public ResponseEntity countWorkdays(@RequestParam(value = "startdate") String startDate,
                                       @RequestParam(value = "enddate") String endDate) {
     logger.debug("/api/workdays/count GET countWorkdays() called with: " + startDate + " as startDate, and " + endDate + " as endDate");
-    WorkdayCountDto workdayCountDto = dateService.countWorkdays(startDate, endDate);
-    logger.debug("/api/workdays/count GET countWorkdays() response: " + workdayCountDto.workdayCount);
-    return new ResponseEntity<>(workdayCountDto, HttpStatus.OK);
+
+    try {
+      valiDates(startDate, endDate);
+
+      WorkdayCountDto workdayCountDto = dateService.countWorkdays(startDate, endDate);
+      logger.debug("/api/workdays/count GET countWorkdays() response: " + workdayCountDto.workdayCount);
+      return new ResponseEntity<>(workdayCountDto, HttpStatus.OK);
+    }
+    catch(IllegalArgumentException e){
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    catch (Exception e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
+
 
   @GetMapping("/api/days/count")
   public ResponseEntity countHolidaysAndWorkdays(@RequestParam(value = "startdate") String startDate,
                                                  @RequestParam(value = "enddate") String endDate) {
     logger.debug("/api/days/count GET countDays() called with: " + startDate + " as startDate, and " + endDate + " as endDate");
-    DayCountDto dayCountDto = dateService.countDays(startDate, endDate);
-    logger.debug("/api/days/count GET countWorkdays() response: holidayCount = " + dayCountDto.holidayCount + ", workdayCount = " + dayCountDto.workdayCount);
-    return new ResponseEntity<>(dayCountDto, HttpStatus.OK);
+    try {
+      valiDates(startDate, endDate);
+      DayCountDto dayCountDto = dateService.countDays(startDate, endDate);
+      logger.debug("/api/days/count GET countWorkdays() response: holidayCount = " + dayCountDto.holidayCount + ", workdayCount = " + dayCountDto.workdayCount);
+      return new ResponseEntity<>(dayCountDto, HttpStatus.OK);
+    }
+      catch(IllegalArgumentException e){
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+      catch (Exception e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  private void valiDates(@RequestParam("startdate") String startDate, @RequestParam("enddate") String endDate) {
+    if (!dateService.valiDate(startDate) ||
+        !dateService.valiDate(endDate)) {
+      throw new IllegalArgumentException(startDate + " or " + endDate + " is out of scope");
+    }
   }
 }
