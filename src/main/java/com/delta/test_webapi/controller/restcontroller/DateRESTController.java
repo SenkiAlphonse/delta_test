@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 public class DateRESTController {
 
@@ -25,14 +27,22 @@ public class DateRESTController {
   @GetMapping("/api/holidays")
   public ResponseEntity isHoliday(@RequestParam(value = "date") String date){
     logger.debug("/api/holiday GET isHoliday() called with " + date);
+
     try{
+      if(!dateService.valiDate(date)){
+        throw new IllegalArgumentException(date + " is out of scope");
+      }
       IsHolidayResponseDto isThisDateHoliday = dateService.setHolidayResponseDto(date);
       logger.debug("/api/holidays GET isHoliday() response: " + isThisDateHoliday.isHoliday);
       return new ResponseEntity<>(isThisDateHoliday, HttpStatus.OK);
     }
-    catch(Exception e){
+    catch(IllegalArgumentException e){
       logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    catch (Exception e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -41,25 +51,36 @@ public class DateRESTController {
                                    @RequestParam(value = "setholiday") boolean setHoliday){
     logger.debug("/api/holidays PUT setHoliday called with date = " + date + ", setholiday = " + setHoliday);
 
-    boolean isHoliday = dateService.isHoliday(date);
+    try {
+      if (!dateService.valiDate(date)) {
+        throw new IllegalArgumentException(date + " is out of scope");
+      }
 
-    if(setHoliday && !isHoliday) {
-      dateService.addHoliday(date);
-      logger.debug("/api/holidays PUT response OK; New holiday added: " + date);
-      return new ResponseEntity<>("New holiday added: " + date, HttpStatus.OK);
+      boolean isHoliday = dateService.isHoliday(date);
+
+      if (setHoliday && !isHoliday) {
+        dateService.addHoliday(date);
+        logger.debug("/api/holidays PUT response OK; New holiday added: " + date);
+        return new ResponseEntity<>("New holiday added: " + date, HttpStatus.OK);
+      } else if (!setHoliday && isHoliday) {
+        dateService.removeHoliday(date);
+        logger.debug("/api/holidays PUT response OK; Holiday removed: " + date);
+        return new ResponseEntity<>("Holiday removed: " + date, HttpStatus.OK);
+      } else if (setHoliday) {
+        logger.debug("/api/holidays PUT response OK; No change required, already holiday: " + date);
+        return new ResponseEntity<>("No change required, already holiday: " + date, HttpStatus.OK);
+      } else {
+        logger.debug("/api/holidays PUT response OK; No change required, not a holiday: " + date);
+        return new ResponseEntity<>("No change required, not a holiday: " + date, HttpStatus.OK);
+      }
     }
-    else if(!setHoliday && isHoliday) {
-      dateService.removeHoliday(date);
-      logger.debug("/api/holidays PUT response OK; Holiday removed: " + date);
-      return new ResponseEntity<>("Holiday removed: " + date, HttpStatus.OK);
+    catch (IllegalArgumentException e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
-    else if(setHoliday) {
-      logger.debug("/api/holidays PUT response OK; No change required, already holiday: " + date);
-      return new ResponseEntity<>("No change required, already holiday: " + date, HttpStatus.OK);
-    }
-    else {
-      logger.debug("/api/holidays PUT response OK; No change required, not a holiday: " + date);
-      return new ResponseEntity<>("No change required, not a holiday: " + date, HttpStatus.OK);
+    catch (Exception e) {
+      logger.debug("/api/holidays GET isHoliday response: " + e.getMessage());
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }

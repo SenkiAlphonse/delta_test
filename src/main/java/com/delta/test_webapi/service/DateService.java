@@ -23,4 +23,6 @@ public interface DateService {
   HolidayCountDto countHolidays(String startDate, String endDate);
 
   WorkdayCountDto countWorkdays(String startDate, String endDate);
+
+  boolean valiDate(String date);
 }

@@ -101,6 +101,18 @@ public class DateServiceImpl implements DateService {
     }
     return new WorkdayCountDto(workdayCount);
   }
+
+  @Override
+  public boolean valiDate(String date) {
+    LocalDate valiDate = getLocalDateFromParam(date);
+
+    if (valiDate.isBefore(getLocalDateFromParam(System.getenv("EARLIEST_DATE"))) || valiDate.isAfter(LocalDate.now().plusYears(5))){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
 }
 
 
