@@ -67,7 +67,6 @@ public class IntervalRESTController {
     }
   }
 
-
   @GetMapping("/api/days/count")
   public ResponseEntity countHolidaysAndWorkdays(@RequestParam(value = "startdate") String startDate,
                                                  @RequestParam(value = "enddate") String endDate) {

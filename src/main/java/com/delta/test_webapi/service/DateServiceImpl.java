@@ -15,7 +15,7 @@ public class DateServiceImpl implements DateService {
 
   private static Logger logger = LoggerFactory.getLogger(DateService.class);
 
-  HolidayRepository holidayRepository = HolidayRepository.getInstance();
+  private HolidayRepository holidayRepository = HolidayRepository.getInstance();
 
   @Override
   public ArrayList<Holiday> getHolidayList() {
@@ -105,13 +105,7 @@ public class DateServiceImpl implements DateService {
   @Override
   public boolean valiDate(String date) {
     LocalDate valiDate = getLocalDateFromParam(date);
-
-    if (valiDate.isBefore(getLocalDateFromParam(System.getenv("EARLIEST_DATE"))) || valiDate.isAfter(LocalDate.now().plusYears(5))){
-      return false;
-    }
-    else {
-      return true;
-    }
+    return !valiDate.isBefore(getLocalDateFromParam(System.getenv("EARLIEST_DATE"))) && !valiDate.isAfter(LocalDate.now().plusYears(5));
   }
 }
 
