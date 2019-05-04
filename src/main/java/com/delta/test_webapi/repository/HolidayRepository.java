@@ -19,8 +19,8 @@ public class HolidayRepository {
 
   private static Logger logger = LoggerFactory.getLogger(HolidayRepository.class);
 
-  ArrayList<Holiday> holidayList;
-  String repoFileName;
+  private ArrayList<Holiday> holidayList;
+  private String repoFileName;
   private static final Type HOLIDAY_LIST_TYPE = new TypeToken<ArrayList<Holiday>>(){}.getType();
 
   private HolidayRepository() {
@@ -51,14 +51,14 @@ public class HolidayRepository {
     return HolidayRepository.instance;
   }
 
-  void readHolidaysFromFile() throws IOException {
+  private void readHolidaysFromFile() throws IOException {
       Gson gson = new Gson();
       JsonReader jsonReader = new JsonReader(new FileReader(repoFileName));
       holidayList = gson.fromJson(jsonReader, HOLIDAY_LIST_TYPE);
       jsonReader.close();
   }
 
-  void writeHolidaysToFile() {
+  private void writeHolidaysToFile() {
     Gson gson = new Gson();
     try {
       FileWriter fileWriter = new FileWriter(repoFileName);

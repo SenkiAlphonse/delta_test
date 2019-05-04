@@ -138,3 +138,49 @@
 2019-05-04 22:21:54,234 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-05-04 22:21:54,235 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
 2019-05-04 22:21:54,244 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 9 ms
+2019-05-04 22:33:07,970 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-17] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-04 22:33:18,991 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TestWebapiApplication on ASUS-ZENBOOK-NK with PID 17128 (started by Nagy Krisztina in C:\Users\Nagy Krisztina\IdeaProjects\delta)
+2019-05-04 22:33:18,994 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-05-04 22:33:18,995 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-05-04 22:33:19,039 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-05-04 22:33:19,039 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-05-04 22:33:20,448 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2019-05-04 22:33:20,468 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2019-05-04 22:33:20,480 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2019-05-04 22:33:20,481 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-04 22:33:20,596 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2019-05-04 22:33:20,597 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1558 ms
+2019-05-04 22:33:21,013 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-04 22:33:21,143 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [restartedMain] Adding welcome page template: index
+2019-05-04 22:33:21,217 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2019-05-04 22:33:21,326 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2019-05-04 22:33:21,347 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-04 22:33:21,352 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TestWebapiApplication in 2.698 seconds (JVM running for 4.183)
+2019-05-04 22:33:22,673 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-04 22:33:22,674 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-05-04 22:33:22,681 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 6 ms
+2019-05-04 22:33:33,527 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-6] /api/days/count GET countDays() called with: 2019-05-04 as startDate, and 2019-05-02 as endDate
+2019-05-04 22:33:33,529 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-6] /api/days/count GET countWorkdays() response: holidayCount = 0, workdayCount = 0
+2019-05-04 22:36:03,225 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-15] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-04 22:36:09,514 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting TestWebapiApplication on ASUS-ZENBOOK-NK with PID 236 (started by Nagy Krisztina in C:\Users\Nagy Krisztina\IdeaProjects\delta)
+2019-05-04 22:36:09,518 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-05-04 22:36:09,518 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-05-04 22:36:09,563 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-05-04 22:36:09,563 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-05-04 22:36:11,057 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2019-05-04 22:36:11,094 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2019-05-04 22:36:11,112 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2019-05-04 22:36:11,114 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-04 22:36:11,274 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2019-05-04 22:36:11,274 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1711 ms
+2019-05-04 22:36:11,591 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-04 22:36:11,735 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [restartedMain] Adding welcome page template: index
+2019-05-04 22:36:11,811 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2019-05-04 22:36:11,932 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2019-05-04 22:36:11,969 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-04 22:36:11,977 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started TestWebapiApplication in 2.849 seconds (JVM running for 4.179)
+2019-05-04 22:36:12,043 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-04 22:36:12,043 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-05-04 22:36:12,052 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 9 ms
+2019-05-04 22:36:12,097 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/days/count GET countDays() called with: 2019-05-04 as startDate, and 2019-05-02 as endDate
+2019-05-04 22:36:12,112 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/days/count GET countWorkdays() response: Error: the start-date should be before the end-date

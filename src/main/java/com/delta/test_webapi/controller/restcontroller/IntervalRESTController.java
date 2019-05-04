@@ -92,5 +92,8 @@ public class IntervalRESTController {
         !dateService.valiDate(endDate)) {
       throw new IllegalArgumentException("Error: " + startDate + " or " + endDate + " is out of scope");
     }
+    else if (dateService.getLocalDateFromParam(startDate).isAfter(dateService.getLocalDateFromParam(endDate))){
+      throw new IllegalArgumentException("Error: the start-date should be before the end-date");
+    }
   }
 }
