@@ -184,3 +184,7 @@
 2019-05-04 22:36:12,052 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 9 ms
 2019-05-04 22:36:12,097 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/days/count GET countDays() called with: 2019-05-04 as startDate, and 2019-05-02 as endDate
 2019-05-04 22:36:12,112 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-1] /api/days/count GET countWorkdays() response: Error: the start-date should be before the end-date
+2019-05-04 22:38:25,566 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-3] /api/days/count GET countDays() called with: 2019-05-04 as startDate, and 2019-05-17 as endDate
+2019-05-04 22:38:25,572 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-3] /api/days/count GET countWorkdays() response: holidayCount = 0, workdayCount = 14
+2019-05-04 22:38:32,589 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-6] /api/days/count GET countDays() called with: 2019-05-01 as startDate, and 2019-05-17 as endDate
+2019-05-04 22:38:32,592 DEBUG com.delta.test_webapi.controller.restcontroller.IntervalRESTController [http-nio-8080-exec-6] /api/days/count GET countWorkdays() response: holidayCount = 1, workdayCount = 16

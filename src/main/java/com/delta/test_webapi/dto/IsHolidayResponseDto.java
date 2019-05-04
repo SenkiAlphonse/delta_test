@@ -1,4 +1,4 @@
-package com.delta.test_webapi.model;
+package com.delta.test_webapi.dto;
 
 import java.time.LocalDate;
 

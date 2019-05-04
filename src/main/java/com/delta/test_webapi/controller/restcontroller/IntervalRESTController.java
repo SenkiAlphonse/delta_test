@@ -1,8 +1,8 @@
 package com.delta.test_webapi.controller.restcontroller;
 
-import com.delta.test_webapi.model.DayCountDto;
-import com.delta.test_webapi.model.HolidayCountDto;
-import com.delta.test_webapi.model.WorkdayCountDto;
+import com.delta.test_webapi.dto.DayCountDto;
+import com.delta.test_webapi.dto.HolidayCountDto;
+import com.delta.test_webapi.dto.WorkdayCountDto;
 import com.delta.test_webapi.service.DateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

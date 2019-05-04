@@ -1,11 +1,16 @@
 package com.delta.test_webapi.service;
 
+import com.delta.test_webapi.dto.DayCountDto;
+import com.delta.test_webapi.dto.HolidayCountDto;
+import com.delta.test_webapi.dto.IsHolidayResponseDto;
+import com.delta.test_webapi.dto.WorkdayCountDto;
 import com.delta.test_webapi.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface DateService {
+
   ArrayList<Holiday> getHolidayList();
 
   boolean isHoliday(String date);

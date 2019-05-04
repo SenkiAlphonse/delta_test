@@ -1,7 +1,7 @@
 package com.delta.test_webapi.controller.restcontroller;
 
 
-import com.delta.test_webapi.model.IsHolidayResponseDto;
+import com.delta.test_webapi.dto.IsHolidayResponseDto;
 import com.delta.test_webapi.service.DateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

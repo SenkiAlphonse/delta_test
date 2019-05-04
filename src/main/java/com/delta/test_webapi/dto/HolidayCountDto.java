@@ -1,6 +1,7 @@
-package com.delta.test_webapi.model;
+package com.delta.test_webapi.dto;
 
 public class HolidayCountDto {
+
   public int holidayCount;
 
   public HolidayCountDto() {
