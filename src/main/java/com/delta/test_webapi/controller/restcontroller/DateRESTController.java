@@ -54,11 +54,11 @@ public class DateRESTController {
 
       if (setHoliday && !isHoliday) {
         dateService.addHoliday(date);
-        logger.debug("/api/holidays PUT response OK; New holiday added: " + date);
+        logger.debug("/api/holidays PUT response OK; Set to Holiday: " + date);
         return new ResponseEntity<>("New holiday added: " + date, HttpStatus.OK);
       } else if (!setHoliday && isHoliday) {
         dateService.removeHoliday(date);
-        logger.debug("/api/holidays PUT response OK; Holiday removed: " + date);
+        logger.debug("/api/holidays PUT response OK; Set to Workday: " + date);
         return new ResponseEntity<>("Holiday removed: " + date, HttpStatus.OK);
       } else if (setHoliday) {
         logger.debug("/api/holidays PUT response OK; No change required, already holiday: " + date);
