@@ -19,7 +19,20 @@ public class DateServiceImpl implements DateService {
 
   private static Logger logger = LoggerFactory.getLogger(DateService.class);
 
+  private LocalDate minDate = getLocalDateFromParam(System.getenv("EARLIEST_DATE"));
+  private LocalDate maxDate = (LocalDate.of(LocalDate.now().getYear()+5, 12, 31));
+
   private HolidayRepository holidayRepository = HolidayRepository.getInstance();
+
+  @Override
+  public LocalDate getMinDate() {
+    return minDate;
+  }
+
+  @Override
+  public LocalDate getMaxDate() {
+    return maxDate;
+  }
 
   @Override
   public ArrayList<Holiday> getHolidayList() {
@@ -109,7 +122,8 @@ public class DateServiceImpl implements DateService {
   @Override
   public boolean valiDate(String date) {
     LocalDate valiDate = getLocalDateFromParam(date);
-    return !valiDate.isBefore(getLocalDateFromParam(System.getenv("EARLIEST_DATE"))) && !valiDate.isAfter(LocalDate.now().plusYears(5));
+    return !valiDate.isBefore(minDate) &&
+        !valiDate.isAfter(maxDate);
   }
 }
 

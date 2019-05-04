@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 public interface DateService {
 
+  LocalDate getMinDate();
+
+  LocalDate getMaxDate();
+
   ArrayList<Holiday> getHolidayList();
 
   boolean isHoliday(String date);

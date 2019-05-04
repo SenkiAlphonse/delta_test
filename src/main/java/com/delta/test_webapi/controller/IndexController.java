@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.LocalDate;
-
 @Controller
 public class IndexController {
 
@@ -20,8 +18,8 @@ public class IndexController {
 
   @GetMapping("/")
   public String showIndexPage(Model model) {
-    model.addAttribute("mindate", dateService.getLocalDateFromParam(System.getenv("EARLIEST_DATE")));
-    model.addAttribute("maxdate", LocalDate.now().plusYears(5));
+    model.addAttribute("mindate", dateService.getMinDate());
+    model.addAttribute("maxdate", dateService.getMaxDate());
     return "index";
   }
 }
