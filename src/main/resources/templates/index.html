@@ -6,5 +6,29 @@
 </head>
 <body>
 
+<div>
+    <h1>Delta_WebAPI</h1>
+    <!----------------------/api/holidays isHoliday--------------------------------------->
+    <h2>Check this date for Holiday...</h2>
+    <form action="#" th:action="@{/api/holidays}" method="get">
+        <div>
+            <div>
+                <label for="isHoliday">Date</label>
+            </div>
+            <div>
+                <input type="date"
+                       name="date"
+                       id="isHoliday"
+                       required
+                       title="Select a date"
+                       th:min="${mindate}"
+                       th:max="${maxdate}"/>
+            </div>
+        </div>
+        <div>
+            <button type="submit">Is this a Holiday?</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

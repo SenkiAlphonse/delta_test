@@ -80,7 +80,7 @@ public class DateRESTController {
 
   private void valiDate(@RequestParam("date") String date) {
     if (!dateService.valiDate(date)) {
-      throw new IllegalArgumentException(date + " is out of scope");
+      throw new IllegalArgumentException("Error: " + date + " is out of scope");
     }
   }
 }

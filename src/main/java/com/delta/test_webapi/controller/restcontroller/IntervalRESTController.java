@@ -90,7 +90,7 @@ public class IntervalRESTController {
   private void valiDates(@RequestParam("startdate") String startDate, @RequestParam("enddate") String endDate) {
     if (!dateService.valiDate(startDate) ||
         !dateService.valiDate(endDate)) {
-      throw new IllegalArgumentException(startDate + " or " + endDate + " is out of scope");
+      throw new IllegalArgumentException("Error: " + startDate + " or " + endDate + " is out of scope");
     }
   }
 }
