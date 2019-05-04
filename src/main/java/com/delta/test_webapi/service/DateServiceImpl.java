@@ -19,10 +19,16 @@ public class DateServiceImpl implements DateService {
 
   private static Logger logger = LoggerFactory.getLogger(DateService.class);
 
-  private LocalDate minDate = getLocalDateFromParam(System.getenv("EARLIEST_DATE"));
-  private LocalDate maxDate = (LocalDate.of(LocalDate.now().getYear()+5, 12, 31));
+  private LocalDate minDate;
+  private LocalDate maxDate;
 
-  private HolidayRepository holidayRepository = HolidayRepository.getInstance();
+  private HolidayRepository holidayRepository;
+
+  public DateServiceImpl(){
+    this.holidayRepository = HolidayRepository.getInstance();
+    this.minDate = getLocalDateFromParam(System.getenv("EARLIEST_DATE"));
+    this.maxDate = (LocalDate.of(LocalDate.now().getYear()+5, 12, 31));
+  }
 
   @Override
   public LocalDate getMinDate() {
