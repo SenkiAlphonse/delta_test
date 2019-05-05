@@ -8,11 +8,12 @@ import com.delta.test_webapi.model.*;
 import com.delta.test_webapi.repository.HolidayRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DateServiceImpl implements DateService {
@@ -24,10 +25,11 @@ public class DateServiceImpl implements DateService {
 
   private HolidayRepository holidayRepository;
 
-  public DateServiceImpl(){
-    this.holidayRepository = HolidayRepository.getInstance();
+  @Autowired
+  public DateServiceImpl(HolidayRepository holidayRepository){
+    this.holidayRepository = holidayRepository;
     this.minDate = getLocalDateFromParam(System.getenv("EARLIEST_DATE"));
-    this.maxDate = (LocalDate.of(LocalDate.now().getYear()+5, 12, 31));
+    this.maxDate = LocalDate.of(LocalDate.now().getYear()+5, 12, 31);
   }
 
   @Override
@@ -41,7 +43,7 @@ public class DateServiceImpl implements DateService {
   }
 
   @Override
-  public ArrayList<Holiday> getHolidayList() {
+  public List<Holiday> getHolidayList() {
     return holidayRepository.getHolidayList();
   }
 

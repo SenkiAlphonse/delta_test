@@ -7,7 +7,7 @@ import com.delta.test_webapi.dto.WorkdayCountDto;
 import com.delta.test_webapi.model.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface DateService {
 
@@ -15,7 +15,7 @@ public interface DateService {
 
   LocalDate getMaxDate();
 
-  ArrayList<Holiday> getHolidayList();
+  List<Holiday> getHolidayList();
 
   boolean isHoliday(String date);
 

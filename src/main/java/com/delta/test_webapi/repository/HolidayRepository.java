@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,16 +15,18 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
+@Component
 public class HolidayRepository {
 
   private static Logger logger = LoggerFactory.getLogger(HolidayRepository.class);
 
-  private ArrayList<Holiday> holidayList;
+  private List<Holiday> holidayList;
   private String repoFileName;
   private static final Type HOLIDAY_LIST_TYPE = new TypeToken<ArrayList<Holiday>>(){}.getType();
 
-  private HolidayRepository() {
+  public HolidayRepository() {
     this.repoFileName = System.getenv("HOLIDAYS_REPOSITORY");
     try {
       readHolidaysFromFile();
@@ -41,7 +44,7 @@ public class HolidayRepository {
     }
   }
 
-  // singleton pattern:
+/*  // singleton pattern:
   private static HolidayRepository instance;
 
   public static HolidayRepository getInstance() {
@@ -49,7 +52,7 @@ public class HolidayRepository {
       HolidayRepository.instance = new HolidayRepository();
     }
     return HolidayRepository.instance;
-  }
+  }*/
 
   private void readHolidaysFromFile() throws IOException {
       Gson gson = new Gson();
@@ -92,11 +95,11 @@ public class HolidayRepository {
     writeHolidaysToFile();
   }
 
-  public ArrayList<Holiday> getHolidayList() {
+  public List<Holiday> getHolidayList() {
     return holidayList;
   }
 
-  public void setHolidayList(ArrayList<Holiday> holidayList) {
+  public void setHolidayList(List<Holiday> holidayList) {
     this.holidayList = holidayList;
   }
 
