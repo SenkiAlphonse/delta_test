@@ -44,16 +44,6 @@ public class HolidayRepository {
     }
   }
 
-/*  // singleton pattern:
-  private static HolidayRepository instance;
-
-  public static HolidayRepository getInstance() {
-    if (HolidayRepository.instance == null) {
-      HolidayRepository.instance = new HolidayRepository();
-    }
-    return HolidayRepository.instance;
-  }*/
-
   private void readHolidaysFromFile() throws IOException {
       Gson gson = new Gson();
       JsonReader jsonReader = new JsonReader(new FileReader(repoFileName));
